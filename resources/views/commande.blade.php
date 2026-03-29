@@ -13,14 +13,13 @@
 <section id="commande-section">
   <div class="container">
 
-    <!-- CHOIX TYPE -->
     <div class="type-choice">
-      <button class="type-btn active" onclick="setType('devis', this)">
+      <button type="button" class="type-btn active" onclick="setType('devis', this)">
         <span>📋</span>
         <strong>Demande de Devis</strong>
         <p>Gratuit — Recevez une estimation de prix</p>
       </button>
-      <button class="type-btn" onclick="setType('commande', this)">
+      <button type="button" class="type-btn" onclick="setType('commande', this)">
         <span>🚀</span>
         <strong>Passer Commande</strong>
         <p>Démarrez votre projet directement</p>
@@ -39,7 +38,6 @@
         </div>
       @endif
 
-      <!-- INFOS CLIENT -->
       <div class="form-section">
         <h3>👤 Vos Informations</h3>
         <div class="form-row">
@@ -64,11 +62,10 @@
         </div>
         <div class="form-group">
           <label>Ville / Localité</label>
-          <input type="text" name="ville" value="{{ old('ville') }}" placeholder="Ex: Dakar, Thiès, Ziguinchor..."/>
+          <input type="text" name="ville" value="{{ old('ville') }}" placeholder="Ex: Dakar, Thiès..."/>
         </div>
       </div>
 
-      <!-- INFOS PROJET -->
       <div class="form-section">
         <h3>🏗️ Votre Projet</h3>
         <div class="form-row">
@@ -95,7 +92,7 @@
         </div>
         <div class="form-group">
           <label>Description du projet *</label>
-          <textarea name="description" rows="6" placeholder="Décrivez votre projet en détail : type de construction, superficie, nombre d'étages, matériaux souhaités..." required>{{ old('description') }}</textarea>
+          <textarea name="description" rows="6" placeholder="Décrivez votre projet en détail..." required>{{ old('description') }}</textarea>
         </div>
       </div>
 
@@ -104,6 +101,7 @@
       </button>
       <p class="form-note">✅ Nous vous contactons sous 24h · Devis gratuit et sans engagement</p>
     </form>
+
   </div>
 </section>
 
@@ -117,16 +115,21 @@ function setType(type, el) {
   el.classList.add('active');
 }
 
-// Pré-sélection via URL
-const params = new URLSearchParams(window.location.search);
-if (params.get('type') === 'commande') {
-  setType('commande', document.querySelectorAll('.type-btn')[1]);
-}
-if (params.get('service')) {
-  const sel = document.querySelector('select[name="type_service"]');
-  [...sel.options].forEach(o => {
-    if (o.value.toLowerCase().includes(params.get('service'))) o.selected = true;
-  });
-}
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('type') === 'commande') {
+    const btns = document.querySelectorAll('.type-btn');
+    if (btns.length >= 2) setType('commande', btns[1]);
+  }
+  const serviceParam = params.get('service');
+  if (serviceParam) {
+    const sel = document.querySelector('select[name="type_service"]');
+    if (sel) {
+      [...sel.options].forEach(o => {
+        if (o.value.toLowerCase().replace(/\s/g,'-').includes(serviceParam)) o.selected = true;
+      });
+    }
+  }
+});
 </script>
 @endsection
