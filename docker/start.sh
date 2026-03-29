@@ -27,7 +27,7 @@ chmod -R 777 /var/www/html/bootstrap/cache
 
 # Migrations
 php artisan migrate --force
-
+php artisan db:seed --class=AdminSeeder --force
 # Vider caches
 php artisan config:clear
 php artisan view:clear
