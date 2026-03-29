@@ -57,5 +57,5 @@ RUN sed -i "s/80/${PORT}/g" /etc/apache2/ports.conf \
 # Script de démarrage
 COPY docker/start.sh /start.sh
 RUN chmod +x /start.sh
-
+RUN mkdir -p /tmp/views && chmod 777 /tmp/views
 CMD ["/start.sh"]
