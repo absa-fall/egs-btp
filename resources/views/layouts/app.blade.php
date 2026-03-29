@@ -7,7 +7,7 @@
   <title>@yield('title', 'E.G.S BTP / SUARL')</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
+  <link rel="stylesheet" href="https://egs-btp.onrender.com/css/app.css"/>
   @yield('styles')
 </head>
 <body>
@@ -82,7 +82,7 @@
     </div>
   </footer>
 
-  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="https://egs-btp.onrender.com/js/app.js"></script>
   @yield('scripts')
 </body>
 </html>
