@@ -15,12 +15,10 @@
 
     <div class="type-choice">
       <button type="button" class="type-btn active" onclick="setType('devis', this)">
-        <span>📋</span>
         <strong>Demande de Devis</strong>
         <p>Gratuit — Recevez une estimation de prix</p>
       </button>
       <button type="button" class="type-btn" onclick="setType('commande', this)">
-        <span>🚀</span>
         <strong>Passer Commande</strong>
         <p>Démarrez votre projet directement</p>
       </button>
@@ -33,13 +31,13 @@
       @if($errors->any())
         <div class="alert-error">
           @foreach($errors->all() as $error)
-            <p>⚠️ {{ $error }}</p>
+            <p>{{ $error }}</p>
           @endforeach
         </div>
       @endif
 
       <div class="form-section">
-        <h3>👤 Vos Informations</h3>
+        <h3>Vos Informations</h3>
         <div class="form-row">
           <div class="form-group">
             <label>Nom *</label>
@@ -67,18 +65,18 @@
       </div>
 
       <div class="form-section">
-        <h3>🏗️ Votre Projet</h3>
+        <h3>Votre Projet</h3>
         <div class="form-row">
           <div class="form-group">
             <label>Type de service *</label>
             <select name="type_service" required>
               <option value="">Sélectionner...</option>
-              <option value="Génie Civil & BTP" {{ old('type_service')=='Génie Civil & BTP'?'selected':'' }}>Génie Civil & BTP</option>
-              <option value="Plans Architecturaux" {{ old('type_service')=='Plans Architecturaux'?'selected':'' }}>Plans Architecturaux</option>
-              <option value="Exécution des Travaux" {{ old('type_service')=='Exécution des Travaux'?'selected':'' }}>Exécution des Travaux</option>
-              <option value="Conseils & Expertise" {{ old('type_service')=='Conseils & Expertise'?'selected':'' }}>Conseils & Expertise</option>
-              <option value="Études & Devis" {{ old('type_service')=='Études & Devis'?'selected':'' }}>Études & Devis</option>
-              <option value="Autre" {{ old('type_service')=='Autre'?'selected':'' }}>Autre</option>
+              <option value="Génie Civil & BTP">Génie Civil & BTP</option>
+              <option value="Plans Architecturaux">Plans Architecturaux</option>
+              <option value="Exécution des Travaux">Exécution des Travaux</option>
+              <option value="Conseils & Expertise">Conseils & Expertise</option>
+              <option value="Études & Devis">Études & Devis</option>
+              <option value="Autre">Autre</option>
             </select>
           </div>
           <div class="form-group">
@@ -96,10 +94,8 @@
         </div>
       </div>
 
-      <button type="submit" class="btn-primary btn-full btn-lg">
-        Envoyer ma demande →
-      </button>
-      <p class="form-note">✅ Nous vous contactons sous 24h · Devis gratuit et sans engagement</p>
+      <button type="submit" class="btn-primary btn-full btn-lg">Envoyer ma demande</button>
+      <p class="form-note">Nous vous contactons sous 24h — Devis gratuit et sans engagement</p>
     </form>
 
   </div>
@@ -114,21 +110,11 @@ function setType(type, el) {
   document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
 }
-
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   if (params.get('type') === 'commande') {
     const btns = document.querySelectorAll('.type-btn');
     if (btns.length >= 2) setType('commande', btns[1]);
-  }
-  const serviceParam = params.get('service');
-  if (serviceParam) {
-    const sel = document.querySelector('select[name="type_service"]');
-    if (sel) {
-      [...sel.options].forEach(o => {
-        if (o.value.toLowerCase().replace(/\s/g,'-').includes(serviceParam)) o.selected = true;
-      });
-    }
   }
 });
 </script>

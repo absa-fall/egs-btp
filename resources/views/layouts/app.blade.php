@@ -12,11 +12,10 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav id="navbar">
     <div class="nav-inner">
       <a href="{{ route('home') }}" class="logo">
-        <span class="logo-icon">🦺</span>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         <span class="logo-text">E.G.S <em>BTP</em></span>
       </a>
       <ul class="nav-links">
@@ -39,16 +38,13 @@
     </div>
   </nav>
 
-  <!-- CONTENU -->
   <main>
     @yield('content')
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container footer-inner">
       <div class="footer-brand">
-        <span class="logo-icon">🦺</span>
         <span class="logo-text">E.G.S <em>BTP</em> / SUARL</span>
         <p>Bureau d'Études Professionnel<br/>Dakar, Sénégal</p>
       </div>
@@ -68,11 +64,11 @@
       </div>
       <div class="footer-contact">
         <h5>Contact</h5>
-        <p>📱 <a href="tel:+221784004905">+221 78 400 49 05</a></p>
-        <p>📱 <a href="tel:+221764888407">+221 76 488 84 07</a></p>
-        <p>✉️ <a href="mailto:fayedabakh146@gmail.com">fayedabakh146@gmail.com</a></p>
+        <p>Tél : <a href="tel:+221784004905">+221 78 400 49 05</a></p>
+        <p>Tél : <a href="tel:+221764888407">+221 76 488 84 07</a></p>
+        <p>Email : <a href="mailto:fayedabakh146@gmail.com">fayedabakh146@gmail.com</a></p>
         <a href="https://wa.me/221784004905" class="whatsapp-btn" target="_blank">
-          WhatsApp →
+          WhatsApp
         </a>
       </div>
     </div>
